@@ -12,6 +12,7 @@ RUN apk add --no-cache --virtual .build-deps \
                 jpeg-dev freetype-dev zlib-dev libzmq libpng-dev git
 RUN pip install -r requirements.txt
 RUN pip install django-environ==0.4.0 gevent==1.1.2 django-anymail==0.5
+RUN pip install https://github.com/dataprev/taiga-contrib-ldap-auth/archive/master.zip
 
 # Cleanup
 RUN find /usr/local \
