@@ -30,6 +30,7 @@ if [ ! -f /taiga_frontend/dist/conf.json ]; then
     "privacyPolicyUrl": null,
     "termsOfServiceUrl": null,
     "maxUploadFileSize": null,
+    "loginFormType": "$LOGIN_FORM_TYPE",
     "contribPlugins": []
 }
 EOF

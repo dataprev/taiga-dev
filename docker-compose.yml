@@ -86,8 +86,10 @@ services:
       - backend:ro
     ports:
       - "80:80"
+    environment:
+      - LOGIN_FORM_TYPE=normal
     entrypoint: ['/frontend/scripts/entrypoint.sh']
-    command: ["nginx", "-g", "daemon off;"]      
+    command: ["nginx", "-g", "daemon off;"]
 
   # Celery worker
   celery:
