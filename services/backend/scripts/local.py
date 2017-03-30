@@ -73,3 +73,33 @@ if env('USE_ANYMAIL', cast=bool, default=False):
 #         "LOCATION": "unique-snowflake"
 #     }
 # }
+
+# *************** SMTP
+if env('SMTP', cast=bool, default=False):
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_USE_TLS = env('EMAIL_USE_TLS', cast=bool, default=True)
+    EMAIL_HOST = env('EMAIL_HOST')
+    EMAIL_PORT = env('EMAIL_PORT', cast=int, default=587)
+    EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+    DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
+
+if env('LDAP', cast=bool, default=False):
+    INSTALLED_APPS += ["taiga_contrib_ldap_auth"]
+
+    LDAP_SERVER = env('LDAP_SERVER')
+    LDAP_PORT = env('LDAP_PORT', cast=int, default=636)
+
+    # Full DN of the service account use to connect to LDAP server and search for login user's account entry
+    # If LDAP_BIND_DN is not specified, or is blank, then an anonymous bind is attempated
+    LDAP_BIND_DN = env('LDAP_BIND_DN')
+    LDAP_BIND_PASSWORD = env('LDAP_BIND_PASSWORD')
+    # Starting point within LDAP structure to search for login user
+    LDAP_SEARCH_BASE = env('LDAP_SEARCH_BASE')
+    # LDAP property used for searching, ie. login username needs to match value in sAMAccountName property in LDAP
+    LDAP_SEARCH_PROPERTY = env('LDAP_SEARCH_PROPERTY', default='uid') # 'posixAccount'
+    LDAP_SEARCH_SUFFIX = env('LDAP_SEARCH_SUFFIX', default='')
+
+    # Names of LDAP properties on user account to get email and full name
+    LDAP_EMAIL_PROPERTY = env('LDAP_EMAIL_PROPERTY', default='mail')
+    LDAP_FULL_NAME_PROPERTY = env('LDAP_FULL_NAME_PROPERTY', default='cn')
