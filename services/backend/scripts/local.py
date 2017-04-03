@@ -103,3 +103,10 @@ if env('LDAP', cast=bool, default=False):
     # Names of LDAP properties on user account to get email and full name
     LDAP_EMAIL_PROPERTY = env('LDAP_EMAIL_PROPERTY', default='mail')
     LDAP_FULL_NAME_PROPERTY = env('LDAP_FULL_NAME_PROPERTY', default='cn')
+
+if env('TRELLO', cast=bool, default=False):
+    IMPORTERS['trello'] = {
+        'active': True,
+        'api_key': env('TRELLO_API_KEY'),
+        'secret_key': env('TRELLO_SECRET_KEY')
+    }

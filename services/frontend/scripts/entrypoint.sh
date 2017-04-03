@@ -11,6 +11,10 @@ mkdir logs || true
 
 if [ ! -f /taiga_frontend/dist/conf.json ]; then
     echo "Generating /taiga_frontend/dist/conf.json file..."
+    IMPORTERS="[]"
+    if [[ "$TRELLO" == "True" ]]; then
+        IMPORTERS='["trello"]'
+    fi
     TAIGA_API_URL=${TAIGA_API_URL:-\"/api/v1/\"}
     DEFAULT_LANGUAGE=${DEFAULT_LANGUAGE:-\"en\"}
     TAIGA_EVENTS_URL=${TAIGA_EVENTS_URL:-null}
@@ -26,6 +30,7 @@ if [ ! -f /taiga_frontend/dist/conf.json ]; then
     "themes": ["taiga"],
     "defaultTheme": "taiga",
     "publicRegisterEnabled": ${TAIGA_PUBLIC_REGISTER_ENABLED:-true},
+    "importers": $IMPORTERS,
     "feedbackEnabled": true,
     "privacyPolicyUrl": null,
     "termsOfServiceUrl": null,
