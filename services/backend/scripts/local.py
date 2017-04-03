@@ -53,7 +53,7 @@ BROKER_URL = 'amqp://taiga:taiga@rabbitmq:5672/taiga'
 EVENTS_PUSH_BACKEND = "taiga.events.backends.rabbitmq.EventsPushBackend"
 EVENTS_PUSH_BACKEND_OPTIONS = {"url": "amqp://taiga:taiga@rabbitmq:5672/taiga"}
 
-CELERY_ENABLED = True
+CELERY_ENABLED = env('CELERY', cast=bool, default=True)
 CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
 CELERY_TIMEZONE = 'Europe/Madrid'
 

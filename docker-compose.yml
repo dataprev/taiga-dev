@@ -67,6 +67,7 @@ services:
       - DJANGO_DB_NAME=taiga
       - DJANGO_DB_PASSWORD=123
       - DJANGO_ALLOWED_HOSTS=taiga.dev,localhost,127.0.0.1
+      - CELERY=False
       #- SMTP=True
       #- EMAIL_USE_TLS=True
       #- EMAIL_HOST=localhost
