@@ -26,8 +26,7 @@ stop:
 	docker-compose stop
 
 clean:
-	docker-compose stop
-	docker-compose rm -v
+	docker-compose down
 
 remove_volumes:
 	docker volume rm taiga_postgres_data
