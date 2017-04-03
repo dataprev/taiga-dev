@@ -67,6 +67,23 @@ services:
       - DJANGO_DB_NAME=taiga
       - DJANGO_DB_PASSWORD=123
       - DJANGO_ALLOWED_HOSTS=taiga.dev,localhost,127.0.0.1
+      #- SMTP=True
+      #- EMAIL_USE_TLS=True
+      #- EMAIL_HOST=localhost
+      #- EMAIL_PORT=587
+      #- EMAIL_HOST_USER=
+      #- EMAIL_HOST_PASSWORD=
+      #- DEFAULT_FROM_EMAIL='Taiga <taiga@localhost>'
+      #- LDAP=True
+      #- LDAP_SERVER=ldaps://
+      #- LDAP_PORT=636
+      #- LDAP_BIND_DN=uid=
+      #- LDAP_BIND_PASSWORD=
+      #- LDAP_SEARCH_BASE=dc=br
+      #- LDAP_SEARCH_PROPERTY=uid
+      #- LDAP_SEARCH_SUFFIX= ''
+      #- LDAP_EMAIL_PROPERTY= 'mail'
+      #- LDAP_FULL_NAME_PROPERTY= 'cn'
     entrypoint: ['/backend_scripts/entrypoint.sh']
     command: ['gunicorn', '-b', '0.0.0.0:8000', 'taiga.wsgi']
     depends_on:
